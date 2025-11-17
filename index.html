@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body id="bg" class="bg-white">
+
+    <div class=" container-[1200px] mx-auto pb-[15px] flex justify-between items-center pt-[5px] shadow">
+        <h1 class="font-bold mt-[10px] mx-[40px]">School Management System</h1>
+        <button id="toggle"
+            class="p-[3px] mx-[10px] mt-[10px] bg-gray-200 dark:bg-gray-700 rounded-[50px] cursor-pointer">🌙</button>
+    </div>
+
+    <div class="container mt-[25px] space-y-2 mx-auto">
+        <h2 class="font-bold ">Dashboard Overview</h2>
+        <p>Welcome to your school management dashboard</p>
+    </div>
+
+    <div class="container mx-auto grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 justify-between items-center cursor-pointer ">
+        <div
+            class="flex justify-between items-center gap-[10px] py-[20px] mt-[20px] mx-[10px] p-4 shadow border-1 border-gray-500 rounded-[5px] hover:shadow-xl hover:border-gray-500 ">
+            <div>
+                <p>Total Teachers</p>
+                <p>24</p>
+            </div>
+            <img class="w-[40px]" src="./imgs/o'qituvchi.svg" alt="">
+        </div>
+        <div
+            class="flex justify-between items-center gap-[10px] py-[20px] mt-[20px] mx-[10px] p-4 shadow border-1 border-gray-500 rounded-[5px] hover:shadow-xl hover:border-gray-500 ">
+            <div>
+                <p>Total Students</p>
+                <p>80</p>
+            </div>
+            <img class="w-[40px]" src="./imgs/student.svg" alt="">
+        </div>
+        <div
+            class="flex justify-between items-center gap-[10px] py-[20px] mt-[20px] mx-[10px] p-4 shadow border-1 border-gray-500 rounded-[5px] hover:shadow-xl hover:border-gray-500 ">
+            <div>
+                <p>Avg Teacher Rating</p>
+                <p>4.4</p>
+            </div>
+            <img class="w-[40px]" src="./imgs/o'qituvchi.reyting.svg" alt="">
+        </div>
+        <div
+            class="flex justify-between items-center gap-[10px] py-[20px] mt-[20px] mx-[10px] p-4 shadow border-1 border-gray-500 rounded-[5px] hover:shadow-xl hover:border-gray-500 ">
+            <div>
+                <p>Avg Students Rating</p>
+                <p>3.5</p>
+            </div>
+            <img class="w-[40px]" src="./imgs/student.reting.svg" alt="">
+        </div>
+    </div>
+
+    <div class="container mx-auto flex mt-[20px] p-[10px] ">
+        <div
+            class="container mx-auto p-[10px] border-1 border-gray-500 rounded-[10px] mt-[20px] py-[15px] justify-between items-center">
+            <h1 class="mx-[10px]">Quick Actions</h1>
+            <div
+                class=" flex text-white bg-blue-600 items-center py-[20px] mt-[20px] mx-[10px] p-4 border-1 border-blue-600 hover:shadow-xl hover:border-red-500 rounded-[10px] cursor-pointer">
+                <div>
+                    <img class="w-[30px]" src="./imgs/o'qituvchi.svg" alt="">
+                </div>
+                <div class="mx-[10px]">
+                    <h1>Manage Teachers</h1>
+                    <p>View and manage all teachers</p>
+                </div>
+            </div>
+            <div class="flex text-white bg-purple-600 items-center py-[20px] mt-[20px] mx-[10px] p-4 border-1 border-purple-600 hover:shadow-xl hover:border-red-500 rounded-[10px] cursor-pointer">
+                <img class="w-[30px]" src="./imgs/student.svg" alt="">
+                <div class="mx-[10px]">
+                    <h1>Manage Students</h1>
+                    <p>View and manage all students</p>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="container mx-[15px] p-[15px] border-1 border-gray-500 rounded-[10px] mt-[20px] py-[15px] justify-between items-center">
+            <h3>Recent Activity</h3>
+            <div class="mt-[15px] flex items-center">
+                <div class="w-[10px] bg-[blue] h-[10px] rounded-[50px]"></div>
+                <div class="p-[10px]">
+                    <h3>New teacher added</h3>
+                    <p class="text-[14px]">2 hours ago</p>
+                </div>
+            </div>
+            <div class="mt-[5px] flex items-center">
+                <div class="w-[10px] bg-[green] h-[10px] rounded-[50px]"></div>
+                <div class="p-[10px]">
+                    <h3>Student ratings updated</h3>
+                    <p class="text-[14px]">5 hours ago</p>
+                </div>
+            </div>
+            <div class="mt-[5px] flex items-center ">
+                <div class="w-[10px] bg-[purple] h-[10px] rounded-[50px]"></div>
+                <div class="p-[10px]">
+                    <h3>New students enrolled</h3>
+                    <p class="text-[14px]">1 day ago</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
