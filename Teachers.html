@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+    <div class=" container mx-auto flex justify-between p-[20px]">
+        <div class="">
+            <h1 class="font-bold ">Teachers</h1>
+            <p>Showing 24 of 24 teachers</p>
+        </div>
+        <button class="h-[30px] w-[120px] bg-blue-500 rounded-[5px] mt-[15px] pt-[2px] cursor-pointer">+ Add Teacher
+        </button>
+    </div>
+
+    <div
+        class="search-cards bg-[white] container w-[1250px] mt-[15px] mx-auto hidden rounded-md relative hidden sm:block flex-grow">
+        <input id="input" type="text" placeholder="Search teacher by name, email, or profession..."
+            class="w-full border border-[#70C05B] rounded-md pl-4 pr-10 py-2 ">
+        <img src="./imgs/search.jpg" alt="search" class="absolute right-3 top-2.5 w-5 h-5">
+        <div class="search-cards w-full max-h-[300px] absolute top-[80px]">
+        </div>
+    </div>
+
+    <div class="container items-center p-5 mx-auto mt-[20px] ">
+        <button
+            class="border border-gray-500  cursor-pointer rounded-[5px] p-[5px] px-[10px] mr-[10px] mx-auto items-center ">All
+            Geneder</button>
+
+        <button
+            class="border border-gray-500 cursor-pointer rounded-[5px] p-[5px] px-[10px] mr-[10px] mx-auto items-center ">All
+            Experience</button>
+
+        <button
+            class="border border-gray-500 cursor-pointer rounded-[5px] p-[5px] px-[10px] mr-[10px] mx-auto items-center ">All
+            Rating</button>
+
+        <button class="border border-gray-500 cursor-pointer rounded-[5px] p-[5px] px-[10px] mx-auto items-center ">All
+            Profession</button>
+    </div>
+
+    <div class="cointainer flex ">
+         <div class="cointainer mx-auto p-[10px] items-center border border:border-gray-500 rounded-[10px] w-[300px] h-[250px]">
+        <img class="w-[50px]" src="./imgs/o'qituvchi.svg" alt="o'qituvchi">
+        <div>
+            <h2>Justin Walter</h2>
+            <p class="bg-gray-200 rounded-[5px] p-[2px] w-[60px] font-bold">Biology</p>
+            <div class="w-[30px] flex gap-[35px] pt-[10px]">
+                <div class="flex gap-[2px]">
+                <img src="./imgs/sumka.svg" alt="sumka">
+                <p>23y</p>
+            </div>
+            <div class="flex gap-[3px]">
+                <img src="./imgs/odamcha.svg" alt="odamcha">
+                <p>36y</p>
+                </div>
+            </div>
+        </div> 
+    </div>
+
+     <div class="cointainer mx-auto p-[10px] items-center border border:border-gray-500 rounded-[10px] w-[300px] h-[250px]">
+        <img class="w-[50px]" src="./imgs/o'qituvchi.svg" alt="o'qituvchi">
+        <div>
+            <h2>Justin Walter</h2>
+            <p class="bg-gray-200 rounded-[5px] p-[2px] w-[60px] font-bold">Biology</p>
+            <div class="w-[30px] flex gap-[35px] pt-[10px]">
+                <div class="flex gap-[2px]">
+                <img src="./imgs/sumka.svg" alt="sumka">
+                <p>23y</p>
+            </div>
+            <div class="flex gap-[3px]">
+                <img src="./imgs/odamcha.svg" alt="odamcha">
+                <p>36y</p>
+                </div>
+            </div>
+        </div> 
+    </div>
+     <div class="cointainer mx-auto p-[10px] items-center border border:border-gray-500 rounded-[10px] w-[300px] h-[250px]">
+        <img class="w-[50px]" src="./imgs/o'qituvchi.svg" alt="o'qituvchi">
+        <div>
+            <h2>Justin Walter</h2>
+            <p class="bg-gray-200 rounded-[5px] p-[2px] w-[60px] font-bold">Biology</p>
+            <div class="w-[30px] flex gap-[35px] pt-[10px]">
+                <div class="flex gap-[2px]">
+                <img src="./imgs/sumka.svg" alt="sumka">
+                <p>23y</p>
+            </div>
+            <div class="flex gap-[3px]">
+                <img src="./imgs/odamcha.svg" alt="odamcha">
+                <p>36y</p>
+                </div>
+            </div>
+        </div> 
+    </div>
+    </div>
+
+    
+
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
