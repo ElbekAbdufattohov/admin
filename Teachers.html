@@ -5,21 +5,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
-<body>
-    <div class=" container mx-auto flex justify-between p-[20px]">
-        <div class="">
-            <h1 class="font-bold ">Teachers</h1>
-            <p>Showing 24 of 24 teachers</p>
+<body id="bg" class="bg-white">
+
+    <aside id="default-sidebar"
+        class="fixed top-0 left-0 z-40 w-64 h-full transition-transform -translate-x-full sm:translate-x-0 border-1 border-gray-500"
+        aria-label="Sidebar">
+        <div class="h-full  overflow-y-auto bg-[grey]/10 ">
+            <li class="border-1 border-gray-500 h-[76px] w-full flex pb-[5px]">
+                <a href="./index.html"
+                    class="flex items-center px-2 py-2 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
+                    <img class="w-[20px]" src="./imgs/student.svg" alt="">
+                    <span class="flex-1 ms-3 whitespace-nowrap text-[18px] font-bold">EduAdmin</span>
+
+                </a>
+            </li>
+            <ul class="space-y-2 font-medium px-[10px]  ">
+                <li class=" p-[10px] pt-[5px] rounded-[15px]">
+                    <a href="#" class="flex items-center px-2 py-1.5 text-body rounded-base group"> <span
+                            class="ms-3 ">Dashboard</span>
+                    </a>
+                </li>
+
+                <li class="hover:bg-[grey]/30 p-[10px] pt-[5px] rounded-[15px] duration-300">
+                    <a href="./Teachers.html"
+                        class="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
+                        <img class="w-[20px]" src="./imgs/o'qituvchi.svg" alt="">
+                        <span class="flex-1 ms-3 whitespace-nowrap ">Teachers</span>
+                    </a>
+                </li>
+
+                <li class="hover:bg-[grey]/30 p-[10px] pt-[5px] rounded-[15px] duration-300">
+                    <a href="./students.html"
+                        class="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
+                        <img class="w-[20px]" src="./imgs/student.svg" alt="">
+                        <span class="flex-1 ms-3 whitespace-nowrap ">Students</span>
+
+                    </a>
+                </li>
+
+
+
+                <li class="hover:bg-[grey]/30 p-[10px] pt-[5px] rounded-[15px] duration-300">
+                    <a href="./settings.html"
+                        class="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
+                        <img class="w-[20px]" src="./imgs/settings.svg" alt="">
+                        <span class="flex-1 ms-3 whitespace-nowrap ">Settings</span>
+
+                    </a>
+                </li>
+
+            </ul>
         </div>
-        <button class="h-[30px] w-[120px] bg-blue-500 rounded-[5px] mt-[15px] pt-[2px] cursor-pointer">+ Add Teacher
+    </aside>
+
+
+    <div class="sm:ml-64 lg:ml-64 p-[15px] flex justify-between items-center border-1 border-gray-500 ">
+        <h1 class=" text-[30px] ml-6">School Management System</h1>
+        <button id="toggle"
+            class="p-[3px] mx-[10px] mt-[10px] bg-gray-200 dark:bg-gray-700 rounded-[50px] cursor-pointer ">🌙</button>
+    </div>
+
+
+    <div class=" sm:ml-64 lg:ml-65 flex justify-between p-[20px]">
+        <div class="">
+            <h1 class="font-bold text-[20px] ">Teachers</h1>
+            <p class="text-[20px]">Showing 24 of 24 teachers</p>
+        </div>
+        <button id="addTicher"  class=" text-white cursor-pointer text-[18px] bg-blue-800 p-[10px] rounded-[15px]">+ Add Teacher
         </button>
     </div>
 
     <div
-        class="search-cards bg-[white] container w-[1250px] mt-[15px] mx-auto hidden rounded-md relative hidden sm:block flex-grow">
+        class="search-cards bg-[white] sm:ml-64 lg:ml-68 md:ml-65 w-[100] mt-[15px] mx-auto hidden rounded-md relative hidden sm:block flex-grow">
         <input id="input" type="text" placeholder="Search teacher by name, email, or profession..."
             class="w-full border border-[#70C05B] rounded-md pl-4 pr-10 py-2 ">
         <img src="./imgs/search.jpg" alt="search" class="absolute right-3 top-2.5 w-5 h-5">
@@ -27,81 +88,221 @@
         </div>
     </div>
 
-    <div class="container items-center p-5 mx-auto mt-[20px] ">
-        <button
-            class="border border-gray-500  cursor-pointer rounded-[5px] p-[5px] px-[10px] mr-[10px] mx-auto items-center ">All
-            Geneder</button>
+    <div class=" sm:ml-64 lg:ml-64 pt-[30px] px-[20px] pb-[30px]">
 
-        <button
-            class="border border-gray-500 cursor-pointer rounded-[5px] p-[5px] px-[10px] mr-[10px] mx-auto items-center ">All
-            Experience</button>
+            <form class=" flex w-full gap-[30px] items-center ">
+                <div>
+                   
+                    <select id="sort-name"
+                        class="block w-full px-3 py-2.5 cursor-pointer border-1 border-gray-500 rounded text-sm  shadow-xs  mb-4">
+                        <option value="Default">All Geneder</option>
+                        <option value="asc">A-Z</option>
+                        <option value="desc">Z-A</option>
+                        
+                    </select>
+                </div>
+                <div>
+                    
+                    <select id="small"
+                        class="block w-full px-3 py-2.5 cursor-pointer border-1 border-gray-500 rounded text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body mb-4">
+                        <option selected>All Experience</option>
+                        <option value="US">0-5 years</option>
+                        <option value="CA">5-10 years</option>
+                        <option value="FR">10-20 years</option>
+                        <option value="DE">20+ years</option>
+                    </select>
+                </div>
+                <div>
+                   
+                    <select id="small"
+                        class="block w-full px-3 py-2.5 cursor-pointer border-1 border-gray-500 rounded text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body mb-4">
+                        <option selected>All Rating</option>
+                        <option value="US">4.5 stars</option>
+                        <option value="CA">4.0 stars</option>
+                        <option value="FR">3.5 stars</option>
+                        <option value="DE">3.0 stars</option>
+                    </select>
+                </div>
+                <div>
+                   
+                    <select id="small"
+                        class="block w-full px-3 py-2.5 cursor-pointer border-1 border-gray-500 rounded text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body mb-4">
+                        <option selected>All Profession</option>
+                        <option value="US">Frontend</option>
+                        <option value="CA">Phoyten</option>
+                        <option value="FR">Java</option>
+                        <option value="DE">C++</option>
+                    </select>
+                </div>
 
-        <button
-            class="border border-gray-500 cursor-pointer rounded-[5px] p-[5px] px-[10px] mr-[10px] mx-auto items-center ">All
-            Rating</button>
+                
+            </form>
 
-        <button class="border border-gray-500 cursor-pointer rounded-[5px] p-[5px] px-[10px] mx-auto items-center ">All
-            Profession</button>
-    </div>
+        </div>
 
-    <div class="cointainer flex ">
-         <div class="cointainer mx-auto p-[10px] items-center border border:border-gray-500 rounded-[10px] w-[300px] h-[250px]">
-        <img class="w-[50px]" src="./imgs/o'qituvchi.svg" alt="o'qituvchi">
-        <div>
-            <h2>Justin Walter</h2>
-            <p class="bg-gray-200 rounded-[5px] p-[2px] w-[60px] font-bold">Biology</p>
-            <div class="w-[30px] flex gap-[35px] pt-[10px]">
-                <div class="flex gap-[2px]">
-                <img src="./imgs/sumka.svg" alt="sumka">
-                <p>23y</p>
-            </div>
-            <div class="flex gap-[3px]">
-                <img src="./imgs/odamcha.svg" alt="odamcha">
-                <p>36y</p>
+    <!-- <div class="cointainer sm:ml-64 lg:ml-64 flex ">
+        <div
+            class="cointainer mx-auto p-[10px] items-center border border:border-gray-500 rounded-[10px] w-[300px] h-[250px]">
+            <img class="w-[50px]" src="./imgs/o'qituvchi.svg" alt="o'qituvchi">
+            <div>
+                <h2>Justin Walter</h2>
+                <p class="bg-gray-200 rounded-[5px] p-[2px] w-[60px] font-bold">Biology</p>
+                <div class="w-[30px] flex gap-[35px] pt-[10px]">
+                    <div class="flex gap-[2px]">
+                        <img src="./imgs/sumka.svg" alt="sumka">
+                        <p>23y</p>
+                    </div>
+                    <div class="flex gap-[3px]">
+                        <img src="./imgs/odamcha.svg" alt="odamcha">
+                        <p>36y</p>
+                    </div>
                 </div>
             </div>
-        </div> 
-    </div>
+        </div>
 
-     <div class="cointainer mx-auto p-[10px] items-center border border:border-gray-500 rounded-[10px] w-[300px] h-[250px]">
-        <img class="w-[50px]" src="./imgs/o'qituvchi.svg" alt="o'qituvchi">
-        <div>
-            <h2>Justin Walter</h2>
-            <p class="bg-gray-200 rounded-[5px] p-[2px] w-[60px] font-bold">Biology</p>
-            <div class="w-[30px] flex gap-[35px] pt-[10px]">
-                <div class="flex gap-[2px]">
-                <img src="./imgs/sumka.svg" alt="sumka">
-                <p>23y</p>
-            </div>
-            <div class="flex gap-[3px]">
-                <img src="./imgs/odamcha.svg" alt="odamcha">
-                <p>36y</p>
+        <div
+            class="cointainer mx-auto p-[10px] items-center border border:border-gray-500 rounded-[10px] w-[300px] h-[250px]">
+            <img class="w-[50px]" src="./imgs/o'qituvchi.svg" alt="o'qituvchi">
+            <div>
+                <h2>Justin Walter</h2>
+                <p class="bg-gray-200 rounded-[5px] p-[2px] w-[60px] font-bold">Biology</p>
+                <div class="w-[30px] flex gap-[35px] pt-[10px]">
+                    <div class="flex gap-[2px]">
+                        <img src="./imgs/sumka.svg" alt="sumka">
+                        <p>23y</p>
+                    </div>
+                    <div class="flex gap-[3px]">
+                        <img src="./imgs/odamcha.svg" alt="odamcha">
+                        <p>36y</p>
+                    </div>
                 </div>
             </div>
-        </div> 
-    </div>
-     <div class="cointainer mx-auto p-[10px] items-center border border:border-gray-500 rounded-[10px] w-[300px] h-[250px]">
-        <img class="w-[50px]" src="./imgs/o'qituvchi.svg" alt="o'qituvchi">
-        <div>
-            <h2>Justin Walter</h2>
-            <p class="bg-gray-200 rounded-[5px] p-[2px] w-[60px] font-bold">Biology</p>
-            <div class="w-[30px] flex gap-[35px] pt-[10px]">
-                <div class="flex gap-[2px]">
-                <img src="./imgs/sumka.svg" alt="sumka">
-                <p>23y</p>
-            </div>
-            <div class="flex gap-[3px]">
-                <img src="./imgs/odamcha.svg" alt="odamcha">
-                <p>36y</p>
+        </div>
+        <div
+            class="cointainer mx-auto p-[10px] items-center border border:border-gray-500 rounded-[10px] w-[300px] h-[250px]">
+            <img class="w-[50px]" src="./imgs/o'qituvchi.svg" alt="o'qituvchi">
+            <div>
+                <h2>Justin Walter</h2>
+                <p class="bg-gray-200 rounded-[5px] p-[2px] w-[60px] font-bold">Biology</p>
+                <div class="w-[30px] flex gap-[35px] pt-[10px]">
+                    <div class="flex gap-[2px]">
+                        <img src="./imgs/sumka.svg" alt="sumka">
+                        <p>23y</p>
+                    </div>
+                    <div class="flex gap-[3px]">
+                        <img src="./imgs/odamcha.svg" alt="odamcha">
+                        <p>36y</p>
+                    </div>
                 </div>
             </div>
-        </div> 
-    </div>
-    </div>
+        </div>
+    </div> -->
 
-    
+
+     <div id="outer-modal"
+        class="hidden  fixed left-0 ring-0 top-0  bg-white flex justify-center items-center h-full absolute z-100">
+        <form id="form" class="max-w-md mx-auto bg-gray-100 p-[20px] rounded-[20px]  ">
+            <div class="relative z-0 w-full mb-5 group">
+                <input type="text" name="floating_email" id="floating_email"
+                    class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer"
+                    placeholder=" " required />
+                <label for="floating_email"
+                    class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">FullName</label>
+            </div>
+            <div class="relative z-0 w-full mb-5 group">
+                <input type="text" name="floating_email" id="floating_email"
+                    class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer"
+                    placeholder=" " required />
+                <label for="floating_email"
+                    class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">avatar</label>
+            </div>
+            <div class="relative z-0 w-full mb-5 group">
+                <input type="text" name="floating_password" id="floating_password"
+                    class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer"
+                    placeholder=" " />
+                <label for="floating_password"
+                    class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">profession</label>
+            </div>
+            <div class="grid md:grid-cols-2 md:gap-6">
+                <div class="relative z-0 w-full mb-5 group">
+                    <input type="text" id=""
+                        class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer"
+                        placeholder=" " />
+                    <label for="floating_phone"
+                        class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">age</label>
+                </div>
+                <div class="relative z-0 w-full mb-5 group">
+                    <input type="text" name="floating_company" id=""
+                        class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer"
+                        placeholder=" " />
+                    <label for="floating_company"
+                        class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">experience</label>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-2 md:gap-6">
+                <div class="relative z-0 w-full mb-5 group">
+                    <input type="tel"
+                        class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer"
+                        placeholder=" " required />
+                    <label for="floating_phone"
+                        class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">rating</label>
+                </div>
+                <div class="relative z-0 w-full mb-5 group">
+                    <input type="tel"
+                        class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer"
+                        placeholder=" " required />
+                    <label for="floating_company"
+                        class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">phone</label>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 md:gap-6">
+                <div class="relative z-0 w-full mb-5 group">
+                    <input type="email"
+                        class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer"
+                        placeholder=" " required />
+                    <label for="floating_phone"
+                        class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Emile</label>
+                </div>
+                <div class="relative z-0 w-full mb-5 group">
+                    <input type="text"
+                        class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer"
+                        placeholder=" " required />
+                    <label for="floating_company"
+                        class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">in</label>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-10 md:gap-5  pb-[20px]">
+                <input type="checkbox" placeholder="gendr" name="gendr" id="gendr">
+                <h1>gender</h1>
+            </div>
+
+            <button class="bg-blue-500 text-white p-2 rounded-[7px] cursor-pointer">Submit</button>
+        </form>
+    </div>
+        <nav id="pagenishn" class="flex justify-center ml-50 pb-[30px]">
+            <ul class="flex -space-x-px text-sm">
+                <li>
+                    <button onclick="prevPage()"
+                        class="flex items-center justify-center border rounded cursor-pointer text-sm px-3 h-9">
+                        Orqaga
+                    </button>
+                </li>
+                <li class="flex items-center justify-center border text-sm px-3 h-9" id="page-number">
+                    1
+                </li>
+                <li>
+                    <button onclick="nextPage()"
+                        class="flex items-center justify-center border rounded cursor-pointer text-sm px-3 h-9">
+                        Oldiga
+                    </button>
+                </li>
+            </ul>
+        </nav>
+
+        <div id="tichers-card" class="px-[20px] sm:ml-64 lg:ml-64 grid md:grid-cols-2  lg:grid-cols-4 gap-[20px]">
+        </div>
 
     <script src="./js/main.js"></script>
 </body>
-
-</html>

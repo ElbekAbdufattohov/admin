@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body id="bg" class="bg-white">
+
+    <aside id="default-sidebar"
+        class="fixed top-0 left-0 z-40 w-64 h-full transition-transform -translate-x-full sm:translate-x-0 border-1 border-gray-500"
+        aria-label="Sidebar">
+        <div class="h-full  overflow-y-auto bg-[grey]/10 ">
+            <li class="border-1 border-gray-500 h-[76px] w-full flex pb-[5px]">
+                <a href="./index.html"
+                    class="flex items-center px-2 py-2 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
+                    <img class="w-[20px]" src="./imgs/student.svg" alt="">
+                    <span class="flex-1 ms-3 whitespace-nowrap text-[18px] font-bold">EduAdmin</span>
+
+                </a>
+            </li>
+            <ul class="space-y-2 font-medium px-[10px]  ">
+                <li class=" p-[10px] pt-[5px] rounded-[15px]">
+                    <a href="#" class="flex items-center px-2 py-1.5 text-body rounded-base group"> <span
+                            class="ms-3 ">Dashboard</span>
+                    </a>
+                </li>
+
+                <li class="hover:bg-[grey]/30 p-[10px] pt-[5px] rounded-[15px] duration-300">
+                    <a href="./Teachers.html"
+                        class="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
+                        <img class="w-[20px]" src="./imgs/o'qituvchi.svg" alt="">
+                        <span class="flex-1 ms-3 whitespace-nowrap ">Teachers</span>
+                    </a>
+                </li>
+
+                <li class="hover:bg-[grey]/30 p-[10px] pt-[5px] rounded-[15px] duration-300">
+                    <a href="./students.html"
+                        class="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
+                        <img class="w-[20px]" src="./imgs/student.svg" alt="">
+                        <span class="flex-1 ms-3 whitespace-nowrap ">Students</span>
+
+                    </a>
+                </li>
+
+
+
+                <li class="hover:bg-[grey]/30 p-[10px] pt-[5px] rounded-[15px] duration-300">
+                    <a href="./settings.html"
+                        class="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
+                        <img class="w-[20px]" src="./imgs/settings.svg" alt="">
+                        <span class="flex-1 ms-3 whitespace-nowrap ">Settings</span>
+
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </aside>
+
+     <div class="sm:ml-64 lg:ml-64 p-[15px] flex justify-between items-center border-1 border-gray-500 ">
+        <h1 class=" text-[30px] ml-6">School Management System</h1>
+        <button id="toggle"
+            class="p-[3px] mx-[10px] mt-[10px] bg-gray-200 dark:bg-gray-700 rounded-[50px] cursor-pointer ">🌙</button>
+    </div>
+
+
+    <div class="sm:ml-64 lg:ml-64   p-[15px] ">
+        <div class="flex items-center justify-between w-full px-[20px] pb-[30px]">
+            <div>
+                <h1 class=" text-[26px]">
+                    Settings
+                </h1>
+                <h1 class=" text-[20px]">
+                    Manage your application settings
+                </h1>
+            </div>
+        </div>
+
+        <div class="max-w-xl w-full ml-[10px] border-1 border-gray-500 p-6 rounded-xl ">
+            <h2 class="text-xl font-semibold mb-1">Profile Settings</h2>
+            <p class=" text-sm mb-6">Update your profile information</p>
+
+            <!-- Name -->
+            <div class="mb-5">
+                <label class="block text-sm mb-2 " for="name">Name</label>
+                <input id="name" type="text" placeholder="Your name" class="w-full  border-1 border-gray-500 rounded-lg px-4 py-3 text-gray-200 placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500">
+            </div>
+
+            <!-- Email -->
+            <div class="mb-6">
+                <label class="block text-sm mb-2 " for="email">Email</label>
+                <input id="email" type="email" placeholder="your.email@example.com" class="w-full border-1 border-gray-500 rounded-lg px-4 py-3 text-gray-200 placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500">
+            </div>
+
+            <button class="bg-black text-white px-5 py-2 rounded-lg font-medium hover:bg-gray-700 cursor-pointer transition">
+                Save Changes
+            </button>
+        </div>
+
+        <div class="max-w-xl w-full mt-[20px] mb-[20px] ml-[10px] mt-10 rounded-2xl border-1 border-gray-500 overflow-hidden">
+            <div class="p-6 space-y-8">
+                <!-- Title -->
+                <div>
+                    <h2 class="text-2xl font-semibold">Notifications</h2>
+                    <p class=" text-sm mt-1">Manage your notification preferences</p>
+                </div>
+
+                <!-- Notification Options -->
+                <div class="space-y-7">
+                    <!-- Email Notifications -->
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-lg font-medium">Email Notifications</h3>
+                            <p class=" text-sm mt-1">Receive email updates about your account</p>
+                        </div>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" class="sr-only peer" checked="">
+                            <div class="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer 
+                      peer-checked:after:translate-x-full peer-checked:after:border-white 
+                      after:content-[''] after:absolute after:top-[2px] after:left-[2px] 
+                      after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all 
+                      peer-checked:bg-blue-600"></div>
+                        </label>
+                    </div>
+
+                    <!-- Push Notifications -->
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-lg font-medium ">Push Notifications</h3>
+                            <p class=" text-sm mt-1">Receive push notifications on your devices</p>
+                        </div>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" class="sr-only peer">
+                            <div class="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer 
+                      peer-checked:after:translate-x-full peer-checked:after:border-white 
+                      after:content-[''] after:absolute after:top-[2px] after:left-[2px] 
+                      after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all 
+                      peer-checked:bg-blue-600"></div>
+                        </label>
+                    </div>
+
+                    <!-- Weekly Reports -->
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-lg font-medium ">Weekly Reports</h3>
+                            <p class=" text-sm mt-1">Get weekly reports about school activities</p>
+                        </div>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" class="sr-only peer" checked="">
+                            <div class="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer 
+                      peer-checked:after:translate-x-full peer-checked:after:border-white 
+                      after:content-[''] after:absolute after:top-[2px] after:left-[2px] 
+                      after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all 
+                      peer-checked:bg-blue-600 peer-checked:bg-opacity-80"></div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="max-w-xl w-full mt-10 border-1 border-gray-500 ml-[10px] rounded-2xl overflow-hidden">
+            <div class="p-6 space-y-8">
+                <!-- Title -->
+                <div>
+                    <h2 class="text-2xl font-semibold ">Privacy</h2>
+                    <p class=" text-sm mt-1">Manage your privacy settings</p>
+                </div>
+
+                <!-- Privacy Options -->
+                <div class="space-y-7">
+                    <!-- Public Profile -->
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-lg font-medium ">Public Profile</h3>
+                            <p class=" text-sm mt-1">Make your profile visible to others</p>
+                        </div>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" class="sr-only peer" checked="">
+                            <div class="w-11 h-6 bg-gray-700 rounded-full peer 
+                      peer-checked:after:translate-x-full 
+                      after:content-[''] after:absolute after:top-[2px] after:left-[2px] 
+                      after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all
+                      peer-checked:bg-blue-600"></div>
+                        </label>
+                    </div>
+
+                    <!-- Show Activity Status -->
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-lg font-medium ">Show Activity Status</h3>
+                            <p class=" text-sm mt-1">Let others see when you're online</p>
+                        </div>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" class="sr-only peer">
+                            <div class="w-11 h-6 bg-gray-700 rounded-full peer 
+                      peer-checked:after:translate-x-full 
+                      after:content-[''] after:absolute after:top-[2px] after:left-[2px] 
+                      after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all
+                      peer-checked:bg-blue-600"></div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
